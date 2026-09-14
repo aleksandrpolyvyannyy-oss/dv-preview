@@ -1,0 +1,88 @@
+/* ==========================================================================
+   DIVERVLK — Design tokens, вариант А «Регистр»
+   Источник: etap1/dizayn-koncepciya.md, 13-TZ-etap2-dizayn.md п.3.1
+   ========================================================================== */
+
+:root{
+  /* --- Цвет: база варианта А ------------------------------------------- */
+  --c-bg:        #ffffff;
+  --c-bg-alt:    #f2f5f7;
+  --c-ink:       #0f2b46;   /* глубокий морской синий — заголовки, шапка, подвал */
+  --c-ink-soft:  #24435f;
+  --c-accent:    #cf4514;   /* сигнальный оранжевый — только заявки и телефон; затемнён от #e8541e из концепции для контраста ≥4.5:1 с белым текстом (п.4 ТЗ) */
+  --c-accent-hover: #b23a10;
+  --c-accent-light: #e8541e; /* исходный тон концепции — только для некстовых декоративных меток (точка бейджа), не для текста */
+  --c-muted:     #5b6b7a;   /* серо-голубой — подписи, второстепенный текст */
+  --c-line:      #c9d3dc;   /* линии-разделители 1px */
+  --c-line-soft: #e1e7ec;
+  --c-white:     #ffffff;
+  --c-ph-fill:   #dde4ea;   /* заливка фото-плейсхолдеров */
+  --c-ph-border: #aebdc9;
+  --c-ph-text:   #72808d;
+  --c-danger:    #b3261e;
+  --c-success:   #1c6b3f;
+
+  /* --- Цвет: тёмная секция (вариант Б), только «Фото и видео» ----------- */
+  --c-dark-bg:      #0a161d;
+  --c-dark-bg-2:    #0f2231;
+  --c-dark-text:    #f2f7fa;
+  --c-dark-muted:   #9db2bf;
+  --c-dark-accent:  #2fb8c6;
+  --c-dark-line:    rgba(242, 247, 250, .14);
+  --c-dark-ph-fill: #16262f;
+
+  /* --- Типографика -------------------------------------------------------*/
+  --f-display: 'Manrope', 'Arial Narrow', Arial, sans-serif;
+  --f-body:    'Inter', Arial, sans-serif;
+  --f-mono-nums: 'Manrope', Arial, sans-serif; /* табличные цифры фактов */
+
+  --fs-h1: clamp(2.25rem, 1.55rem + 3.1vw, 4rem);
+  --fs-h2: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem);
+  --fs-h3: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+  --fs-fact: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+
+  --lh-tight: 1.12;
+  --lh-heading: 1.22;
+  --lh-body: 1.6;
+
+  /* --- Сетка и отступы (шкала 8px) --------------------------------------*/
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 128px;
+
+  --container-max: 1200px;
+  --container-pad: clamp(20px, 4vw, 64px);
+  --grid-gap: 24px;
+
+  --radius-0: 0px;
+  --radius-s: 2px; /* только у полей форм, минимально */
+
+  --border-hair: 1px solid var(--c-line);
+  --border-hair-dark: 1px solid var(--c-dark-line);
+
+  --icon-stroke: 2px;
+
+  --ease-doc: cubic-bezier(.25,.1,.25,1);
+  --dur-reveal: 420ms;
+  --dur-fast: 180ms;
+
+  --z-header: 100;
+  --z-mobile-bar: 90;
+  --z-cookie: 80;
+  --z-modal: 200;
+}
+
+@media (min-width: 1440px){
+  :root{
+    --container-max: 1320px;
+  }
+}
