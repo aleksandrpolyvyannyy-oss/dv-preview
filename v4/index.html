@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script>if(/[?&]motion=1/.test(location.search))document.documentElement.classList.add('force-motion')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Вариант 4 — DIVERVLK</title>
+<meta name="description" content="Макет главной страницы DIVERVLK.RU, вариант 6: панели поверх сцены погружения всегда стоят в свободной от водолаза и судна зоне кадра; после погружения — крупные фотоблоки на статичном подводном фоне.">
+<link rel="preload" href="../assets/fonts/manrope-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/manrope-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="css/style.css?v=15">
+<link rel="stylesheet" href="css/sections.css?v=15">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <a href="#top" class="logo">
+    <span class="logo-mark">ВД</span>
+    <span class="logo-text"><b>Водолазное дело</b><small class="d-only">Владивосток</small></span>
+  </a>
+  <nav class="header-nav" aria-label="Основное меню">
+    <a href="#tasks">Услуги</a><a href="#shipscheme">Схема судна</a><a href="#process">Этапы</a><a href="#geography">География</a><a href="#documents">Документы</a><a href="#cases">Работы</a><a href="#request">Контакты</a>
+  </nav>
+  <div class="header-right">
+    <a href="tel:+74230000000" class="header-phone"><b>+7 (423) [___-__-__]</b><span class="status">круглосуточно</span></a>
+    <button type="button" class="btn btn-outline btn-40 d-only-flex js-go-request">Расчёт</button>
+    <a href="tel:+74230000000" class="icon-btn icon-tel m-only-flex" aria-label="Позвонить">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <button type="button" class="icon-btn js-burger" aria-label="Меню">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="drawer-top">
+    <a href="#top" class="logo"><span class="logo-mark">ВД</span><span class="logo-text"><b>Водолазное дело</b></span></a>
+    <button type="button" class="icon-btn" id="closeNavBtn" aria-label="Закрыть меню">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="#tasks">Услуги</a>
+    <a href="#shipscheme">Схема судна</a>
+    <a href="#process">Этапы</a>
+    <a href="#geography">География</a>
+    <a href="#documents">Документы</a>
+    <a href="#cases">Работы</a>
+    <a href="#request">Контакты</a>
+  </nav>
+  <div class="contact-block">
+    <a href="tel:+74230000000" class="tel">+7 (423) [___-__-__]</a>
+    <span class="status">дежурный инженер на связи круглосуточно</span>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ SCROLLYTELLING: ПЕРВЫЙ ЭКРАН + ПОГРУЖЕНИЕ + ТЕКСТОВЫЕ ПАНЕЛИ ИСТОРИИ ============ -->
+<div class="story" id="story" aria-label="Первый экран и погружение под воду с информационными блоками">
+
+  <!-- фон истории: закреплён (sticky) на весь путь #story, столб кадров + видео-канвас поверх -->
+  <div class="story-bg" id="storyBg">
+
+    <div class="shaft-col" id="shaftCol">
+
+      <!-- ---- DESKTOP: g2 → g4 → g5 ---- -->
+      <div class="shaft-frame sf-surface d-only" data-frame="0">
+        <picture>
+          <source type="image/avif" media="(min-width:1400px)" srcset="img/g2-d-1920.avif">
+          <source type="image/webp" media="(min-width:1400px)" srcset="img/g2-d-1920.webp">
+          <source type="image/avif" media="(min-width:900px)" srcset="img/g2-d-1280.avif">
+          <source media="(max-width:899.98px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+          <source type="image/webp" media="(min-width:900px)" srcset="img/g2-d-1280.webp">
+          <img src="img/g2-d-1280.webp" width="1280" height="720" alt="Водолаз на борту катера у корпуса судна" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="shaft-frame sf-water d-only js-lazy" data-frame="1">
+        <picture>
+          <source type="image/avif" media="(min-width:1400px)" data-srcset="img/g4-d-1920.avif">
+          <source type="image/webp" media="(min-width:1400px)" data-srcset="img/g4-d-1920.webp">
+          <source type="image/avif" data-srcset="img/g4-d-1280.avif">
+          <source type="image/webp" data-srcset="img/g4-d-1280.webp">
+          <img data-src="img/g4-d-1280.webp" width="1280" height="720" alt="Линия воды у борта судна, начало погружения" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="shaft-frame sf-under d-only js-lazy" data-frame="2">
+        <picture>
+          <source type="image/avif" media="(min-width:1400px)" data-srcset="img/g5-d-1920.avif">
+          <source type="image/webp" media="(min-width:1400px)" data-srcset="img/g5-d-1920.webp">
+          <source type="image/avif" data-srcset="img/g5-d-1280.avif">
+          <source type="image/webp" data-srcset="img/g5-d-1280.webp">
+          <img data-src="img/g5-d-1280.webp" width="1280" height="720" alt="Водолаз с фонарём у корпуса судна под водой, марки осадки" loading="lazy" decoding="async">
+        </picture>
+      </div>
+
+      <!-- ---- MOBILE: g3 → g1 → g4-crop → g5-crop ---- -->
+      <div class="shaft-frame sf-surface m-only" data-frame="0">
+        <picture>
+          <source type="image/avif" srcset="img/g3-m-1080.avif 1080w, img/g3-m-720.avif 720w" sizes="100vw">
+          <source type="image/webp" srcset="img/g3-m-1080.webp 1080w, img/g3-m-720.webp 720w" sizes="100vw">
+          <img src="img/g3-m-720.webp" width="720" height="1281" alt="Водолаз на трапе катера у борта судна" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="shaft-frame sf-mid m-only js-lazy" data-frame="1">
+        <picture>
+          <source type="image/avif" data-srcset="img/g1-m-1080.avif 1080w, img/g1-m-720.avif 720w" sizes="100vw">
+          <source type="image/webp" data-srcset="img/g1-m-1080.webp 1080w, img/g1-m-720.webp 720w" sizes="100vw">
+          <img data-src="img/g1-m-720.webp" width="720" height="1290" alt="Водолаз спускается с катера в воду у борта, вид сверху" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="shaft-frame sf-water m-only js-lazy" data-frame="2">
+        <picture>
+          <source type="image/avif" data-srcset="img/g4-m-1080.avif 1080w, img/g4-m-720.avif 720w" sizes="100vw">
+          <source type="image/webp" data-srcset="img/g4-m-1080.webp 1080w, img/g4-m-720.webp 720w" sizes="100vw">
+          <img data-src="img/g4-m-720.webp" width="720" height="1280" alt="Линия воды у борта судна, начало погружения" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="shaft-frame sf-under m-only js-lazy" data-frame="3">
+        <picture>
+          <source type="image/avif" data-srcset="img/g5-m-1080.avif 1080w, img/g5-m-720.avif 720w" sizes="100vw">
+          <source type="image/webp" data-srcset="img/g5-m-1080.webp 1080w, img/g5-m-720.webp 720w" sizes="100vw">
+          <img data-src="img/g5-m-720.webp" width="720" height="1280" alt="Водолаз с фонарём у корпуса судна под водой" loading="lazy" decoding="async">
+        </picture>
+      </div>
+
+    </div><!-- /shaft-col -->
+
+    <!-- image-sequence scrubbing canvas: overlays the column once g4/g4-m is fully in view -->
+    <canvas class="shaft-video" id="shaftVideoCanvas" aria-hidden="true"></canvas>
+
+    <!-- overlay layers, tied to scroll progress -->
+    <div class="shaft-tint" id="shaftTint" aria-hidden="true"></div>
+    <canvas class="shaft-bubbles" id="bubblesCanvas" aria-hidden="true"></canvas>
+    <div class="shaft-vignette" aria-hidden="true"></div>
+    <div class="story-end-fade" id="storyEndFade" aria-hidden="true"></div>
+
+  </div><!-- /story-bg -->
+
+  <!-- контент истории: наезжает на sticky-фон отрицательным отступом. Каждая текстовая панель (кроме первого экрана)
+       обёрнута в .story-block — внутри блока панель "липкая" (sticky), стоит в свободной от водолаза/судна зоне кадра,
+       пока фон под ней продолжает погружаться, затем уходит и приходит следующая. Сторону (лево/право на компьютере,
+       верх/низ на телефоне) выставляет js/scene.js по карте window.DV_ZONES. -->
+  <div class="story-content" id="storyContent">
+
+    <div class="story-hero">
+      <!-- hero copy (first screen) -->
+      <div class="hero-copy" id="heroCopy">
+        <div class="hero-eyebrow"><span class="ln"></span><span>Владивосток • Находка • Восточный • Козьмино • Сахалин</span></div>
+        <h1 class="hero-h1">
+          <span><b data-anim style="animation-delay:0ms">Водолазные работы</b></span>
+          <span><b data-anim style="animation-delay:140ms">на Дальнем Востоке</b></span>
+        </h1>
+        <div class="hero-pills" data-anim style="animation-delay:260ms">
+          <span class="pill"><span class="dot-green"></span>Работа 24/7</span>
+          <span class="pill"><span class="dot-accent"></span>Срочный выезд</span>
+        </div>
+        <div class="hero-actions" data-anim style="animation-delay:360ms">
+          <button type="button" class="btn btn-primary btn-60 js-go-request">Получить расчёт стоимости</button>
+          <button type="button" class="btn btn-outline btn-60 js-open-modal">Срочная заявка на водолазные работы</button>
+          <div class="hero-tel"><a href="tel:+74230000000">+7 (423) [___-__-__]</a><span>дежурный инженер на связи круглосуточно</span></div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-cue" id="heroScrollCue">
+        <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <span>Прокрутите — погружение под воду</span>
+      </div>
+    </div><!-- /story-hero -->
+
+    <div class="story-air story-air-sm" data-air-start></div>
+
+    <!-- ============ ЗАДАЧИ (текстовая панель, без фото) ============ -->
+    <div class="story-block" data-panel="tasks">
+      <section class="story-panel tasks-panel" id="tasks" data-reveal>
+        <div class="panel-head">
+          <span class="eyebrow">02 — Услуги</span>
+          <h2>Наши услуги</h2>
+          <p>Шесть частых причин обращения. Нажмите на карточку — откроется страница услуги с порядком работ и отчётностью.</p>
+        </div>
+        <div class="task-grid-text">
+          <a href="#" class="task-card-text">
+            <span class="task-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="5.5" y1="18.5" x2="18.5" y2="5.5"/></svg></span>
+            <span class="task-tx"><b>Намотка на винт<span class="task-tag">Срочно</span></b><i>Освобождаем винт от троса и сетей без буксировки в док</i></span>
+          </a>
+          <a href="#" class="task-card-text">
+            <span class="task-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 10c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></span>
+            <span class="task-tx"><b>Обрастание и перерасход топлива</b><i>Очистка корпуса и винта водолазным способом</i></span>
+          </a>
+          <a href="#" class="task-card-text">
+            <span class="task-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><line x1="21" y1="21" x2="14.65" y2="14.65"/></svg></span>
+            <span class="task-tx"><b>Осмотр для класса и In-Water Survey</b><i>Освидетельствование с видеофиксацией и отчётом</i></span>
+          </a>
+          <a href="#" class="task-card-text">
+            <span class="task-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8.5 7 13a7 7 0 0 1-14 0c0-4.5 7-13 7-13z"/></svg></span>
+            <span class="task-tx"><b>Течь или повреждение корпуса<span class="task-tag">Срочно</span></b><i>Аварийный осмотр, временная заделка на месте</i></span>
+          </a>
+          <a href="#" class="task-card-text">
+            <span class="task-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="1"/><line x1="7" y1="8" x2="7" y2="12"/><line x1="11" y1="8" x2="11" y2="12"/><line x1="15" y1="8" x2="15" y2="12"/></svg></span>
+            <span class="task-tx"><b>Обследование причала и ГТС</b><i>Промер глубин, осмотр свай, дефектная ведомость</i></span>
+          </a>
+          <a href="#" class="task-card-text">
+            <span class="task-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></span>
+            <span class="task-tx"><b>Поиск и подъём<span class="task-tag">Срочно</span></b><i>Поиск затонувшего имущества, судоподъём</i></span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+
+    <div class="story-air story-air-xs"></div>
+
+    <!-- ============ ПРЕИМУЩЕСТВА (текстовая панель) ============ -->
+    <div class="story-block" data-panel="advantages">
+      <section class="story-panel adv-panel" id="advantages" data-reveal>
+        <div class="panel-head">
+          <span class="eyebrow">03 — Преимущества</span>
+          <h2>Почему выбирают нас</h2>
+          <p>Своя техника и дежурная бригада — не ждём субподрядчиков и не срываем сроки.</p>
+        </div>
+        <div class="process-track-panel">
+          <div class="process-step-panel"><span class="process-num"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div class="t">Дежурство 24/7</div><div class="d">Инженер на связи круглосуточно, срочный выезд</div></div>
+          <div class="process-step-panel"><span class="process-num"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2 3h14l2-3"/><path d="M5 17V9h14v8"/><path d="M9 9V5h6v4"/></svg></span><div class="t">Своя станция и катер</div><div class="d">Водолазная станция, катер и снаряжение на базе</div></div>
+          <div class="process-step-panel"><span class="process-num"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><div class="t">Видеофиксация</div><div class="d">Ход работ виден на посту связи в реальном времени</div></div>
+          <div class="process-step-panel"><span class="process-num"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M9 14l2 2 4-4"/></svg></span><div class="t">Отчёт в день окончания</div><div class="d">Видео, фото, замеры и акт — для инспектора и судовладельца</div></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="story-air story-air-xs"></div>
+
+    <!-- ============ КОРОТКАЯ ПОДПИСЬ ПЕРЕД СХЕМОЙ СУДНА (переход через ватерлинию) ============ -->
+    <div class="story-air story-air-xs" data-air-video-start></div>
+
+    <!-- ============ СХЕМА СУДНА (фото-схема с отметками зон + список текстом) ============ -->
+    
+
+    <!-- ============ КАК ПРОХОДИТ РАБОТА ============ -->
+    <div class="story-block" data-panel="process">
+      <section class="story-panel process-panel" id="process" data-reveal>
+        <div class="panel-head">
+          <span class="eyebrow">04 — Этапы</span>
+          <h2>Как мы работаем</h2>
+          <p>От заявки до отчёта — четыре шага, у каждого своё время.</p>
+        </div>
+        <div class="process-track-panel">
+          <div class="process-step-panel">
+            <span class="process-num">1</span>
+            <div class="t">Заявка и расчёт</div>
+            <div class="d">Дежурный инженер уточняет судно, порт и задачу</div>
+            <div class="time">[N] ч</div>
+          </div>
+          <div class="process-step-panel">
+            <span class="process-num">2</span>
+            <div class="t">Выезд бригады</div>
+            <div class="d">Катер, станция и снаряжение — со своей базы</div>
+            <div class="time">[N] ч</div>
+          </div>
+          <div class="process-step-panel">
+            <span class="process-num">3</span>
+            <div class="t">Работа с видеофиксацией</div>
+            <div class="d">Ход работ виден на посту связи в реальном времени</div>
+            <div class="time">[N] ч</div>
+          </div>
+          <div class="process-step-panel">
+            <span class="process-num">4</span>
+            <div class="t">Отчёт и акт</div>
+            <div class="d">Видео, фото, замеры и акт выполненных работ</div>
+            <div class="time">в день окончания</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="story-air story-air-xs"></div>
+
+    <!-- ============ РАБОТАЕМ КРУГЛЫЙ ГОД (текстовая панель) ============ -->
+    <div class="story-block" data-panel="yearround">
+      <section class="story-panel geo-panel" id="yearround" data-reveal>
+        <div class="panel-head">
+          <span class="eyebrow">05 — Зима и рейд</span>
+          <h2>Работаем круглый год</h2>
+          <p>Зимний лёд и открытый рейд не останавливают работы — станция и бригада выходят в любых условиях Дальнего Востока.</p>
+        </div>
+        <div class="geo-list">
+          <div class="geo-item"><span class="port-dot"></span><span class="geo-name">Лёд</span><span class="geo-time mono">спуск через майну</span></div>
+          <div class="geo-item"><span class="port-dot"></span><span class="geo-name">Рейд</span><span class="geo-time mono">работа с катера у борта</span></div>
+          <div class="geo-item"><span class="port-dot"></span><span class="geo-name">Любой сезон</span><span class="geo-time mono">дежурная бригада 24/7</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="story-air story-air-end" data-air-end></div>
+
+  </div><!-- /story-content -->
+</div><!-- /story -->
+
+<!-- ============ ПОСЛЕ ПОГРУЖЕНИЯ: КРУПНЫЕ ФОТОБЛОКИ НА СТАТИЧНОМ ФОНЕ ПОСЛЕДНЕГО ПОДВОДНОГО КАДРА ============ -->
+<div class="deep-photos" id="deepPhotos">
+
+  <div class="deep-bg" id="deepBg" aria-hidden="true">
+    <picture class="d-only"><source type="image/avif" srcset="seq/d/0072.avif"><img src="seq/d/0072.webp" width="1280" height="720" alt="" loading="lazy" decoding="async"></picture>
+    <picture class="m-only"><source type="image/avif" srcset="seq/m/0060.avif"><img src="seq/m/0060.webp" width="540" height="960" alt="" loading="lazy" decoding="async"></picture>
+    <div class="deep-bg-fade"></div>
+  </div>
+
+  <div class="deep-content">
+
+    <!-- ============ ЧТО МЫ ВИДИМ ПОД ВОДОЙ ============ -->
+    <section class="deep-panel ship-deep ship-panel" id="shipscheme" data-reveal>
+        <div class="panel-head">
+          <span class="eyebrow">06 — Схема судна</span>
+          <h2>Осмотр по зонам корпуса</h2>
+          <p>Шесть зон, которые проверяем при каждом погружении.</p>
+        </div>
+
+        <div class="ship-photo-wrap">
+          <div class="ship-photo d-only">
+            <picture>
+              <source type="image/avif" srcset="img/ship-scheme-960.avif 960w, img/ship-scheme-1600.avif 1600w" sizes="(min-width:900px) 600px, 90vw">
+              <source type="image/webp" srcset="img/ship-scheme-960.webp 960w, img/ship-scheme-1600.webp 1600w" sizes="(min-width:900px) 600px, 90vw">
+              <img src="img/ship-scheme-960.webp" width="1600" height="527" alt="Судно в профиль, подводная часть корпуса с отмеченными зонами осмотра" loading="lazy" decoding="async">
+            </picture>
+            <button type="button" class="ship-photo-pin active" data-zone="hull" style="left:25%;top:67.8%" aria-label="Зона: корпус"><span class="pin-dot">1</span><span class="pin-tip">Корпус</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="bottom" style="left:50%;top:85.6%" aria-label="Зона: днище"><span class="pin-dot">2</span><span class="pin-tip">Днище</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="seachest" style="left:58.2%;top:79%" aria-label="Зона: кингстоны и решётки"><span class="pin-dot">3</span><span class="pin-tip">Кингстоны и решётки</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="rudder" style="left:93%;top:77.6%" aria-label="Зона: руль"><span class="pin-dot">4</span><span class="pin-tip pin-tip-left">Руль</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="propeller" style="left:89.8%;top:77.6%" aria-label="Зона: винт"><span class="pin-dot">5</span><span class="pin-tip pin-tip-left">Винт</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="protectors" style="left:80.6%;top:71.4%" aria-label="Зона: протекторы"><span class="pin-dot">6</span><span class="pin-tip">Протекторы</span></button>
+          </div>
+          <div class="ship-photo m-only">
+            <picture>
+              <source type="image/avif" srcset="img/ship-scheme-m-720.avif 720w" sizes="90vw">
+              <source type="image/webp" srcset="img/ship-scheme-m-720.webp 720w" sizes="90vw">
+              <img src="img/ship-scheme-m-720.webp" width="720" height="431" alt="Кормовая часть судна под водой с отмеченными зонами осмотра: решётка кингстона, винт, руль, протекторы" loading="lazy" decoding="async">
+            </picture>
+            <button type="button" class="ship-photo-pin active" data-zone="seachest" style="left:24%;top:79%" aria-label="Зона: кингстоны и решётки"><span class="pin-dot">3</span><span class="pin-tip">Кингстоны и решётки</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="propeller" style="left:81.5%;top:77.6%" aria-label="Зона: винт"><span class="pin-dot">5</span><span class="pin-tip pin-tip-left">Винт</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="rudder" style="left:87.3%;top:77.6%" aria-label="Зона: руль"><span class="pin-dot">4</span><span class="pin-tip pin-tip-left">Руль</span></button>
+            <button type="button" class="ship-photo-pin" data-zone="protectors" style="left:64.7%;top:71.4%" aria-label="Зона: протекторы"><span class="pin-dot">6</span><span class="pin-tip">Протекторы</span></button>
+          </div>
+        </div>
+
+        <div class="ship-list-plain m-only">
+          <button type="button" class="ship-list-item-plain active" data-zone="hull"><b>1 · Корпус</b><i>Осмотр обшивки и сварных швов</i></button>
+          <button type="button" class="ship-list-item-plain" data-zone="bottom"><b>2 · Днище</b><i>Обрастание, коррозия, замеры</i></button>
+          <button type="button" class="ship-list-item-plain" data-zone="seachest"><b>3 · Кингстоны</b><i>Очистка от обрастания</i></button>
+          <button type="button" class="ship-list-item-plain" data-zone="rudder"><b>4 · Руль</b><i>Осмотр пера и баллера</i></button>
+          <button type="button" class="ship-list-item-plain" data-zone="propeller"><b>5 · Винт</b><i>Полировка лопастей</i></button>
+          <button type="button" class="ship-list-item-plain" data-zone="protectors"><b>6 · Протекторы</b><i>Замена при износе</i></button>
+        </div>
+
+        <div class="ship-detail-card">
+          <div>
+            <div class="ship-detail-name js-ship-name">Корпус</div>
+            <div class="ship-detail-desc js-ship-desc">Общий осмотр обшивки, сварных швов и мест возможных повреждений по всей длине корпуса.</div>
+          </div>
+          <div class="ship-zone-nav d-only-flex" role="tablist" aria-label="Зоны корпуса">
+            <button type="button" class="active" data-zone="hull">1 · Корпус</button>
+            <button type="button" data-zone="bottom">2 · Днище</button>
+            <button type="button" data-zone="seachest">3 · Кингстоны</button>
+            <button type="button" data-zone="rudder">4 · Руль</button>
+            <button type="button" data-zone="propeller">5 · Винт</button>
+            <button type="button" data-zone="protectors">6 · Протекторы</button>
+          </div>
+        </div>
+      </section>
+
+    <section class="deep-panel gallery-deep" id="underwater" data-reveal>
+      <div class="panel-head">
+        <span class="eyebrow">07 — Галерея</span>
+        <h2>Фото с подводных работ</h2>
+        <p>Каждая находка — в отчёте с фото и координатами.</p>
+      </div>
+      <div class="ribbon-carousel gallery-carousel" data-carousel>
+        <button type="button" class="rc-btn rc-prev" aria-label="Предыдущее фото"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="ribbon-viewport"><div class="gallery-grid-deep" data-track>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/20-480.avif 480w, img/20-960.avif 960w"><source type="image/webp" srcset="img/20-480.webp 480w, img/20-960.webp 960w"><img src="img/20-480.webp" width="480" height="270" alt="Обрастание корпуса до очистки" loading="lazy" decoding="async"></picture><div class="cap"><b>Обрастание корпуса</b>перерасход топлива</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/22-480.avif 480w"><source type="image/webp" srcset="img/22-480.webp 480w"><img src="img/22-480.webp" width="480" height="270" alt="Обрастание у сварного шва" loading="lazy" decoding="async"></picture><div class="cap"><b>Обрастание у шва</b>риск коррозии металла</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/24-480.avif 480w"><source type="image/webp" srcset="img/24-480.webp 480w"><img src="img/24-480.webp" width="480" height="270" alt="Обрастание заборной решётки" loading="lazy" decoding="async"></picture><div class="cap"><b>Решётка кингстона</b>риск перегрева</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/16-480.avif 480w"><source type="image/webp" srcset="img/16-480.webp 480w"><img src="img/16-480.webp" width="480" height="270" alt="Кромка лопасти гребного винта" loading="lazy" decoding="async"></picture><div class="cap"><b>Кромка лопасти</b>потеря КПД, вибрация</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/18-480.avif 480w"><source type="image/webp" srcset="img/18-480.webp 480w"><img src="img/18-480.webp" width="480" height="270" alt="Повреждения покрытия подводной части" loading="lazy" decoding="async"></picture><div class="cap"><b>Повреждение покрытия</b>риск течи</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/23-480.avif 480w"><source type="image/webp" srcset="img/23-480.webp 480w"><img src="img/23-480.webp" width="480" height="270" alt="Обрастание и коррозия, общий план" loading="lazy" decoding="async"></picture><div class="cap"><b>Общий план</b>дефектная ведомость</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/06-480.avif 480w, img/06-960.avif 960w"><source type="image/webp" srcset="img/06-480.webp 480w, img/06-960.webp 960w"><img src="img/06-480.webp" width="480" height="360" alt="Судно во льду, подготовка к подводному осмотру" loading="lazy" decoding="async"></picture><div class="cap"><b>Подготовка к осмотру</b>зимой, во льду</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/07-480.avif 480w, img/07-960.avif 960w"><source type="image/webp" srcset="img/07-480.webp 480w, img/07-960.webp 960w"><img src="img/07-480.webp" width="480" height="360" alt="Рабочая зона у борта во льду" loading="lazy" decoding="async"></picture><div class="cap"><b>Рабочая зона у борта</b>зимой, во льду</div></div>
+        <div class="gallery-item-deep"><picture><source type="image/avif" srcset="img/09-480.avif 480w, img/09-960.avif 960w"><source type="image/webp" srcset="img/09-480.webp 480w, img/09-960.webp 960w"><img src="img/09-480.webp" width="480" height="360" alt="Танкер на рейде" loading="lazy" decoding="async"></picture><div class="cap"><b>Танкер на рейде</b>работа на открытом рейде</div></div>
+      </div></div>
+        <button type="button" class="rc-btn rc-next" aria-label="Следующее фото"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </section>
+
+    <!-- ============ ВЫПОЛНЕННЫЕ РАБОТЫ ============ -->
+    <section class="deep-panel cases-deep" id="cases" data-reveal>
+      <div class="panel-head">
+        <span class="eyebrow">08 — Портфолио</span>
+        <h2>Выполненные работы</h2>
+        <p>Тип судна или объекта, порт, задача и результат. Названия судов не публикуем.</p>
+      </div>
+      <div class="cases-grid-deep">
+        <div class="case-card-deep">
+          <div class="case-media"><span class="ph">ФОТО РАБОТ</span><picture><source type="image/avif" srcset="img/14-480.avif 480w"><source type="image/webp" srcset="img/14-480.webp 480w"><img src="img/14-480.webp" width="480" height="640" alt="Корпус судна и марки осадки под водой" loading="lazy" decoding="async"></picture></div>
+          <div class="case-body">
+            <div class="case-meta"><span>Буксир</span><span>·</span><span>Владивосток</span></div>
+            <div class="case-title">Подводный осмотр корпуса перед освидетельствованием</div>
+            <div class="case-result">Отчёт с видеофиксацией принят инспектором · <span class="case-term">[N] ч</span></div>
+          </div>
+        </div>
+        <div class="case-card-deep">
+          <div class="case-media"><span class="ph">ФОТО РАБОТ</span><picture><source type="image/avif" srcset="img/17-480.avif 480w"><source type="image/webp" srcset="img/17-480.webp 480w"><img src="img/17-480.webp" width="480" height="640" alt="Гребной винт и руль под килем" loading="lazy" decoding="async"></picture></div>
+          <div class="case-body">
+            <div class="case-meta"><span>Танкер</span><span>·</span><span>Находка</span></div>
+            <div class="case-title">Очистка гребного винта на рейде</div>
+            <div class="case-result">Полировка лопастей, восстановлен ход · <span class="case-term">[N] ч</span></div>
+          </div>
+        </div>
+        <div class="case-card-deep">
+          <div class="case-media"><span class="ph">ФОТО РАБОТ</span><picture><source type="image/avif" srcset="img/03-480.avif 480w"><source type="image/webp" srcset="img/03-480.webp 480w"><img src="img/03-480.webp" width="480" height="360" alt="Суда у причала, подготовка к работам" loading="lazy" decoding="async"></picture></div>
+          <div class="case-body">
+            <div class="case-meta"><span>Причал</span><span>·</span><span>порт Восточный</span></div>
+            <div class="case-title">Обследование причальной стенки и дна</div>
+            <div class="case-result">Дефектная ведомость, промер глубин · <span class="case-term">[N] сут</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ДОКУМЕНТЫ ============ -->
+    <section class="deep-panel docs-deep" id="documents" data-reveal>
+      <div class="panel-head">
+        <span class="eyebrow">09 — Документы</span>
+        <h2>Лицензии и сертификаты</h2>
+        <p>Сканы сертификатов с печатью открываются в PDF. Формулировки о признании берём только из текста документов.</p>
+      </div>
+      <div class="docs-grid-deep">
+        <div class="cert-card">
+          <div class="cert-scan"><span class="ln h1"></span><span class="ln ln2"></span><span class="ln ln3"></span><span class="ln ln4"></span><span class="seal"></span></div>
+          <div class="t">Российский морской регистр судоходства</div>
+          <div class="m">Свидетельство о признании · № [_____] · до [ММ.ГГГГ]</div>
+          <a href="#">Открыть PDF</a>
+        </div>
+        <div class="cert-card">
+          <div class="cert-scan"><span class="ln h1"></span><span class="ln ln2"></span><span class="ln ln3"></span><span class="ln ln4"></span><span class="seal"></span></div>
+          <div class="t">RINA</div>
+          <div class="m">Сертификат · № [_____] · до [ММ.ГГГГ]</div>
+          <a href="#">Открыть PDF</a>
+        </div>
+        <div class="cert-card">
+          <div class="cert-scan"><span class="ln h1"></span><span class="ln ln2"></span><span class="ln ln3"></span><span class="ln ln4"></span><span class="seal"></span></div>
+          <div class="t">[Наименование документа]</div>
+          <div class="m">Тип документа · № [_____] · до [ММ.ГГГГ]</div>
+          <a href="#">Открыть PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ КАРТА ПОРТОВ ============ -->
+    <section class="deep-panel map-deep" id="geography" data-reveal>
+      <div class="panel-head">
+        <span class="eyebrow">10 — География</span>
+        <h2>География работ</h2>
+        <p>База — Владивосток, дежурная бригада выходит в Находку, Восточный и Козьмино; Сахалин и Корсаков — по согласованию.</p>
+      </div>
+      <div class="map-frame">
+        <picture>
+          <source type="image/webp" srcset="img/map-base-960.webp 960w, img/map-base-1600.webp 1600w, img/map-base-2560.webp 2560w" sizes="(min-width:900px) 900px, 100vw">
+          <img src="img/map-base-1600.jpg" srcset="img/map-base-960.jpg 960w, img/map-base-1600.jpg 1600w, img/map-base-2560.jpg 2560w" sizes="(min-width:900px) 900px, 100vw" width="1600" height="900" alt="Карта портов Дальнего Востока: Владивосток, Находка, Восточный, Козьмино, Корсаков, Холмск" loading="lazy" decoding="async">
+        </picture>
+        <button type="button" class="map-pin" style="left:9.31%;top:78.76%;--i:0" aria-label="Владивосток">
+          <span class="pin-ring"></span>
+          <span class="map-label">Владивосток<i>выход [N] ч</i></span>
+        </button>
+        <button type="button" class="map-pin" style="left:17.79%;top:85.47%;--i:1" aria-label="Находка, Восточный, Козьмино">
+          <span class="pin-ring"></span>
+          <span class="map-label">Находка · Восточный · Козьмино<i>выход [N] ч</i></span>
+        </button>
+        <button type="button" class="map-pin pin-left" style="left:88.27%;top:14.88%;--i:2" aria-label="Корсаков">
+          <span class="pin-ring"></span>
+          <span class="map-label">Корсаков<i>выход [N] сут</i></span>
+        </button>
+        <button type="button" class="map-pin pin-left" style="left:82.91%;top:7.45%;--i:3" aria-label="Холмск, Сахалин">
+          <span class="pin-ring"></span>
+          <span class="map-label">Холмск (Сахалин)<i>по согласованию</i></span>
+        </button>
+      </div>
+      <p class="map-credit">Спутниковый снимок: NASA Blue Marble</p>
+    </section>
+
+  
+    <!-- ============ ЗАЯВКА И КОНТАКТЫ ============ -->
+<section class="deep-panel request-deep" id="request" data-reveal>
+  <div class="panel-head">
+    <span class="eyebrow">11 — Заявка</span>
+    <h2>Контакты</h2>
+    <p>Чем полнее данные о судне и сроках, тем точнее расчёт. Дежурный инженер свяжется с вами.</p>
+  </div>
+  <div class="full-form-grid">
+    <div class="success-state" id="fullSuccess" data-reveal>
+      <span class="success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <div class="success-title">Заявка принята</div>
+      <p style="margin:0;color:var(--muted)">Дежурный инженер свяжется с вами по номеру <span class="js-success-phone">[указанному]</span>.</p>
+      <button type="button" class="btn btn-outline-navy btn-40 js-reset-form" data-form="full">Новая заявка</button>
+    </div>
+    <form novalidate id="fullForm" data-form="full" class="full-form" data-reveal>
+      <div class="form-grid2">
+        <div class="field" data-field="vessel"><label>Судно или объект</label><input type="text" placeholder="Тип, длина, осадка" autocomplete="off"><span class="field-error">Укажите тип судна или объект</span></div>
+        <div class="field" data-field="port"><label>Порт</label>
+          <select><option value="" selected disabled hidden>Выберите порт</option><option>Владивосток</option><option>Находка</option><option>Восточный</option><option>Козьмино</option><option>Корсаков</option><option>Сахалин</option></select>
+          <span class="field-error">Выберите порт</span>
+        </div>
+      </div>
+      <div class="field" data-field="need"><label>Что требуется</label>
+        <select><option value="" selected disabled hidden>Выберите вид работ</option><option>Подводный осмотр</option><option>Очистка корпуса или винта</option><option>Намотка на винт</option><option>Течь, аварийная заделка</option><option>Поиск и подъём</option><option>Обследование причала</option><option>Другое</option></select>
+        <span class="field-error">Выберите вид работ</span>
+      </div>
+      <div class="form-grid2">
+        <div class="field" data-field="when"><label>Когда нужны работы</label><input type="text" placeholder="Сейчас / дата" autocomplete="off"><span class="field-error">Укажите, когда нужны работы</span></div>
+        <div class="field" data-field="phone"><label>Телефон</label><input type="tel" placeholder="+7" autocomplete="off"><span class="field-error">Введите номер телефона</span></div>
+      </div>
+      <label class="check"><input type="checkbox"><span>Согласен на обработку персональных данных согласно <a href="#">политике конфиденциальности</a></span></label>
+      <span class="check-error">Без согласия мы не можем принять заявку</span>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px">
+        <button type="submit" class="btn btn-primary btn-56">Получить расчёт</button>
+        <span style="font-size:13px;color:var(--muted)">Расчёт бесплатный, без обязательств</span>
+      </div>
+    </form>
+    <div class="side-contacts" data-reveal>
+      <div><span class="lbl">ТЕЛЕФОН · КРУГЛОСУТОЧНО</span><br><a href="tel:+74230000000" class="tel">+7 (423) [___-__-__]</a></div>
+      <div><span class="lbl">EMAIL</span><br><a href="#" style="font-size:17px;font-weight:500;color:var(--navy)">[info@divervlk.ru]</a></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="#" class="btn btn-outline-navy btn-44">Telegram</a><a href="#" class="btn btn-outline-navy btn-44">WhatsApp</a><a href="#" class="btn btn-outline-navy btn-44">VK</a></div>
+      <div class="req-block">ООО «Водолазное дело»<br>ИНН [__________] · ОГРН [_____________]<br>[690000, г. Владивосток, ул. ______, д. __]</div>
+    </div>
+  </div>
+</section>
+
+  </div><!-- /deep-content -->
+
+</div><!-- /deep-photos -->
+
+
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="contacts">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="row"><span class="mark">ВД</span><span class="name">ООО «Водолазное дело»</span></div>
+      <div class="footer-req">ИНН [__________] · ОГРН [_____________]<br>[690000, г. Владивосток, ул. ______, д. __]</div>
+    </div>
+    <div class="footer-cols-d">
+      <div class="colgap"><a href="#tasks">Услуги</a><a href="#shipscheme">Схема судна</a><a href="#geography">География</a><a href="#cases">Выполненные работы</a></div>
+      <div class="colgap"><a href="#documents">Документы</a><a href="#process">Как проходит работа</a><a href="#">Блог</a><a href="#">О компании</a></div>
+      <div class="colgap"><a href="#request">Контакты</a><a href="#">Политика обработки персональных данных</a><div class="footer-soc" style="margin-top:4px"><a href="#">VK</a><a href="#">Telegram</a><a href="#">Дзен</a></div></div>
+    </div>
+    <div class="footer-links2 m-only">
+      <a href="#tasks">Услуги</a><a href="#shipscheme">Схема судна</a><a href="#geography">География</a><a href="#cases">Выполненные работы</a><a href="#documents">Документы</a><a href="#request">Контакты</a>
+    </div>
+    <div class="footer-soc m-only-flex">
+      <a href="#">VK</a><a href="#">Telegram</a><a href="#">Дзен</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ООО «Водолазное дело», Владивосток</span>
+    <span>Названия судов не публикуются. Данные о признании — из текста сертификатов.</span>
+  </div>
+</footer>
+
+<!-- ============ FIXED CTA ============ -->
+<button type="button" class="desktop-fab js-open-modal"><span class="dot-accent" style="background:#fff"></span>Срочная заявка 24/7</button>
+<div class="mobile-bar">
+  <a href="tel:+74230000000"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить</a>
+  <a href="#" class="mobile-bar-btn js-open-modal">Срочная заявка 24/7</a>
+</div>
+
+<!-- ============ URGENT MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="urgent-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="sheet-handle"></div>
+    <div class="urgent-modal-head">
+      <div class="t" id="modalTitle">Срочная заявка 24/7</div>
+      <button type="button" class="js-close-modal" aria-label="Закрыть"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    </div>
+    <div class="success-state" id="modalSuccess">
+      <span class="success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <div class="success-title">Заявка принята</div>
+      <p>Дежурный инженер свяжется с вами по номеру <span class="js-success-phone">[указанному]</span>.</p>
+      <button type="button" class="btn btn-outline-navy btn-40 js-reset-form" data-form="modal">Новая заявка</button>
+    </div>
+    <form novalidate id="modalForm" data-form="modal" style="display:flex;flex-direction:column;gap:14px">
+      <div class="field" data-field="place"><label>Место работ</label><input type="text" placeholder="Порт, причал, рейд" autocomplete="off"><span class="field-error">Укажите место работ</span></div>
+      <div class="field" data-field="vessel"><label>Судно или объект</label><input type="text" placeholder="Тип, длина, осадка" autocomplete="off"><span class="field-error">Укажите тип судна или объект</span></div>
+      <div class="field" data-field="need"><label>Что требуется</label>
+        <select><option value="" selected disabled hidden>Выберите вид работ</option><option>Подводный осмотр</option><option>Очистка корпуса или винта</option><option>Намотка на винт</option><option>Течь, аварийная заделка</option><option>Поиск и подъём</option><option>Обследование причала</option><option>Другое</option></select>
+        <span class="field-error">Выберите вид работ</span>
+      </div>
+      <div class="form-grid2">
+        <div class="field" data-field="when"><label>Когда</label><input type="text" placeholder="Сейчас / дата" autocomplete="off"><span class="field-error">Укажите, когда нужны работы</span></div>
+        <div class="field" data-field="phone"><label>Телефон</label><input type="tel" placeholder="+7" autocomplete="off"><span class="field-error">Введите номер телефона</span></div>
+      </div>
+      <label class="check"><input type="checkbox"><span>Согласен на обработку персональных данных согласно <a href="#">политике</a></span></label>
+      <span class="check-error">Без согласия мы не можем принять заявку</span>
+      <button type="submit" class="btn btn-primary btn-52 btn-block">Срочная заявка на водолазные работы</button>
+      <span style="font-size:12.5px;color:var(--muted);text-align:center">Дежурный инженер на связи круглосуточно</span>
+    </form>
+  </div>
+</div>
+
+<!-- ============ COOKIE BANNER ============ -->
+<div class="cookie-banner hidden" id="cookieBanner" role="dialog" aria-label="Согласие на cookie">
+  <p>Используем cookie и Яндекс.Метрику для аналитики. <a href="#">Подробнее</a></p>
+  <div class="row">
+    <button type="button" class="btn btn-outline btn-40" id="cookieDecline" style="border-color:rgba(255,255,255,.4)">Отклонить</button>
+    <button type="button" class="btn btn-primary btn-40" id="cookieAccept">Принять</button>
+  </div>
+</div>
+
+<script defer src="js/script.js?v=15"></script>
+<script>
+/* анимации запускаются после загрузки страницы в простое или при первой прокрутке — не блокируют первый экран */
+(function(){
+  var list=['js/gsap.min.js?v=15','js/ScrollTrigger.min.js?v=15','js/lenis.min.js?v=15','js/free-zones.js?v=15','js/scene.js?v=15','js/sections.js?v=15'];
+  var started=false;
+  function next(i){ if(i>=list.length) return; var s=document.createElement('script'); s.src=list[i]; s.async=false; s.onload=s.onerror=function(){ next(i+1); }; document.body.appendChild(s); }
+  function start(){ if(started) return; started=true; ['scroll','touchstart','pointerdown','keydown','wheel'].forEach(function(e){ removeEventListener(e,start); }); next(0); }
+  ['scroll','touchstart','pointerdown','keydown','wheel'].forEach(function(e){ addEventListener(e,start,{passive:true}); });
+  function idle(){ setTimeout(function(){ (window.requestIdleCallback||function(cb){setTimeout(cb,0);})(start,{timeout:1500}); }, 5000); }
+  if(document.readyState==='complete') idle(); else addEventListener('load',idle);
+})();
+</script>
+<script>
+/* Карусель с зацикливанием: сдвиг на одну карточку, затем перенос крайней в другой конец */
+document.querySelectorAll('[data-carousel]').forEach(function(c){
+  var t=c.querySelector('[data-track],.ribbon-track-deep'),busy=false,D=520;
+  function step(){var a=t.children[0],b=t.children[1];return b.getBoundingClientRect().left-a.getBoundingClientRect().left}
+  function go(dir){
+    if(busy)return;busy=true;var s=step();
+    if(dir>0){
+      t.style.transition='transform '+D+'ms cubic-bezier(.3,.7,.2,1)';t.style.transform='translateX('+(-s)+'px)';
+      setTimeout(function(){t.style.transition='none';t.appendChild(t.firstElementChild);t.style.transform='translateX(0)';t.offsetWidth;busy=false},D);
+    }else{
+      t.style.transition='none';t.insertBefore(t.lastElementChild,t.firstElementChild);t.style.transform='translateX('+(-s)+'px)';t.offsetWidth;
+      t.style.transition='transform '+D+'ms cubic-bezier(.3,.7,.2,1)';t.style.transform='translateX(0)';
+      setTimeout(function(){busy=false},D);
+    }
+  }
+  c.querySelector('.rc-next').addEventListener('click',function(){go(1)});
+  c.querySelector('.rc-prev').addEventListener('click',function(){go(-1)});
+});
+</script>
+</body>
+</html>

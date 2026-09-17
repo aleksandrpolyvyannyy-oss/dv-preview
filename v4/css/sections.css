@@ -1,0 +1,396 @@
+/* DIVERVLK v4 — блоки ниже сцены спуска, перенесённые из v3.
+   Переменные и стили шапки/первого экрана/кнопок/mobile-nav/mobile-bar/desktop-fab
+   уже заданы в style.css — здесь они не дублируются, только используются. */
+
+:root{
+  --line-l:#CBD9DE;--line-l2:#B7CBD1;
+  --c-light1:#BFE3E8;--c-sky:#EAF6F8;--c-sky2:#F7FBFC;
+  --shadow-lg:0 12px 32px rgba(6,20,28,.20);
+  --pad:20px;--radius:10px;
+}
+@media (min-width:900px){:root{--pad:72px}}
+
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+/* утилита из v3, которой не было в базовом style.css v4 */
+.d-only-grid{display:none!important}
+@media (min-width:900px){.d-only-grid{display:grid!important}}
+h2,h3{margin:0;text-wrap:pretty}
+p{text-wrap:pretty}
+
+/* доп. кнопки/поля форм, которых не было в style.css v4 */
+.btn-outline-navy{background:transparent;color:var(--navy);border:1px solid var(--line-l2)}
+.btn-outline-navy:hover{border-color:var(--navy)}
+.btn-block{width:100%}
+.btn-44{height:44px;padding:0 20px;font-size:15px}
+.btn-52{height:52px;padding:0 24px;font-size:15px}
+.btn-56{height:56px;padding:0 28px;font-size:16px;border-radius:10px}
+
+.field{display:flex;flex-direction:column;gap:6px}
+.field>label{font:500 13px/1.3 'Inter',sans-serif}
+.field input,.field select{height:46px;padding:0 14px;border:1px solid var(--line-l2);border-radius:8px;font:400 15px 'Inter',sans-serif;color:var(--navy);background:#fff;width:100%}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A5B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.field input::placeholder{color:#8FA0AC}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--ring)}
+.field.error input,.field.error select{border-color:#DC2626}
+.field-error{font-size:12px;color:#DC2626;display:none}
+form.submitted .field.error .field-error{display:block}
+.check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.check input{width:17px;height:17px;margin-top:2px;border-radius:4px;accent-color:var(--navy);flex:none}
+.check span{font-size:13px}
+.check a{text-decoration:underline}
+.check-error{font-size:12px;color:#DC2626;padding-left:27px;margin-top:-4px;display:none}
+form.submitted .check-error.show{display:block}
+
+/* ---------- reveal-on-scroll (для всех перенесённых блоков) ---------- */
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity 480ms var(--ease),transform 480ms var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html:not(.force-motion) [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* ---------- section shell ---------- */
+section.sec{position:relative;padding:56px 20px}
+@media (min-width:900px){section.sec{padding:112px 72px}}
+.sec-head{display:flex;flex-direction:column;gap:16px;margin-bottom:32px;max-width:680px}
+@media (min-width:900px){.sec-head{gap:20px;margin-bottom:48px}}
+.sec-head h2{font:800 28px/1.16 'Manrope',sans-serif;letter-spacing:-.02em}
+@media (min-width:900px){.sec-head h2{font-size:42px;line-height:1.1;max-width:14ch}}
+.sec-head p{font-size:15px;color:var(--muted-light)}
+@media (min-width:900px){.sec-head p{font-size:17px;max-width:56ch}}
+.on-light .sec-head h2,.sec-head.on-light h2{color:var(--navy)}
+.on-light .sec-head p{color:var(--muted)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;color:var(--muted-light2);margin-bottom:8px;display:block}
+.on-light .eyebrow{color:var(--muted)}
+
+/* ===================== 3. TASKS (текстовая панель поверх сцены погружения, без фото) ===================== */
+/* компьютер: компактная сетка 2×3; телефон: горизонтальная лента карточек со snap, чтобы панель была низкой */
+.task-grid-text{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (min-width:900px){.task-grid-text{grid-template-columns:1fr 1fr;gap:10px 14px}}
+@media (max-width:899.98px){
+  .task-grid-text{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x proximity;margin:0 -20px;padding:2px 20px 6px;grid-template-columns:none}
+}
+.task-card-text{position:relative;display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);transition:background 200ms var(--ease),border-color 200ms var(--ease)}
+.task-card-text:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22)}
+@media (max-width:899.98px){.task-card-text{flex:none;width:228px;scroll-snap-align:start}}
+.task-ic{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(207,69,20,.18);color:#fff}
+.task-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.task-tx b{font:800 13px/1.25 'Manrope',sans-serif;color:#fff;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.task-tx i{font:400 11.5px/1.35 'Inter',sans-serif;font-style:normal;color:rgba(242,247,250,.72)}
+.task-tag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;background:var(--accent);color:#fff;font:600 9.5px 'Inter',sans-serif;letter-spacing:.02em}
+
+/* ===================== 4. SHIP SCHEME (фото-схема с отметками зон + список текстом) ===================== */
+.ship-photo-wrap{border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--line-d);margin-bottom:14px}
+.ship-photo{position:relative;width:100%}
+.ship-photo img{width:100%;height:auto;display:block}
+.ship-photo-pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;border:none;background:transparent;padding:0;cursor:pointer;z-index:2}
+.pin-dot{width:22px;height:22px;border-radius:50%;background:rgba(207,69,20,.85);border:2px solid #fff;color:#fff;font:700 10.5px 'JetBrains Mono',monospace;display:grid;place-items:center;box-shadow:0 0 0 0 rgba(207,69,20,.55);animation:dv-pin-pulse 2.2s ease-out infinite}
+.ship-photo-pin.active .pin-dot{background:var(--accent);animation-play-state:paused;box-shadow:0 0 0 5px rgba(207,69,20,.32)}
+@keyframes dv-pin-pulse{0%{box-shadow:0 0 0 0 rgba(207,69,20,.5)}70%{box-shadow:0 0 0 9px rgba(207,69,20,0)}100%{box-shadow:0 0 0 0 rgba(207,69,20,0)}}
+.pin-tip{position:absolute;left:16px;bottom:16px;white-space:nowrap;padding:4px 9px;border-radius:6px;background:rgba(6,22,29,.92);color:#fff;font:600 11px 'Inter',sans-serif;opacity:0;transform:translateY(3px);transition:opacity 160ms var(--ease),transform 160ms var(--ease);pointer-events:none}
+.pin-tip-left{left:auto;right:16px}
+.ship-photo-pin:hover .pin-tip,.ship-photo-pin:focus-visible .pin-tip,.ship-photo-pin.active .pin-tip{opacity:1;transform:translateY(0)}
+@media (min-width:900px){.pin-dot{width:24px;height:24px;font-size:11px}}
+
+.ship-detail-card{display:flex;flex-direction:column;gap:12px}
+.ship-detail-name{font:800 18px/1.2 'Manrope',sans-serif}
+.ship-detail-desc{font-size:12.5px;color:var(--muted-light);max-width:none}
+.ship-zone-nav{display:flex;gap:5px;flex-wrap:wrap}
+.ship-zone-nav button{padding:6px 10px;border-radius:999px;border:1px solid var(--line-d);background:transparent;color:var(--muted-light);font-size:11px;cursor:pointer;transition:all 200ms var(--ease)}
+.ship-zone-nav button.active{border-color:var(--accent);color:#fff;background:rgba(207,69,20,.18)}
+/* mobile: компактный список зон текстом (без превью-фото) */
+.ship-list-plain{display:flex;overflow-x:auto;gap:8px;scroll-snap-type:x proximity;margin:0 -20px 12px;padding:2px 20px 4px}
+.ship-list-item-plain{flex:none;scroll-snap-align:start;width:150px;text-align:left;padding:10px;border-radius:10px;border:1px solid var(--line-d);background:rgba(255,255,255,.03);color:inherit;cursor:pointer}
+.ship-list-item-plain b{display:block;font:800 12.5px 'Manrope',sans-serif;color:#fff}
+.ship-list-item-plain i{display:block;margin-top:3px;font:400 11px/1.3 'Inter',sans-serif;font-style:normal;color:rgba(242,247,250,.68)}
+.ship-list-item-plain.active{border-color:var(--accent);background:rgba(207,69,20,.14)}
+
+/* ===================== 5. PROCESS (компактная сетка 2×2 в панели) ===================== */
+.process-track-panel{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
+@media (max-width:379.98px){.process-track-panel{grid-template-columns:1fr}}
+.process-step-panel{position:relative;padding:14px 12px 12px 34px;border:1px solid rgba(242,247,250,.14);border-radius:10px;background:rgba(255,255,255,.03)}
+.process-num{position:absolute;left:10px;top:13px;width:20px;height:20px;border-radius:50%;background:rgba(207,69,20,.2);border:1.5px solid var(--accent);display:grid;place-items:center;font:700 10.5px 'JetBrains Mono',monospace;color:#fff}
+.process-step-panel .t{font:800 13.5px/1.28 'Manrope',sans-serif}
+.process-step-panel .d{font-size:11.5px;line-height:1.35;color:var(--muted-light);margin-top:4px}
+.process-step-panel .time{font:600 10.5px 'JetBrains Mono',monospace;margin-top:6px;color:#fff}
+
+/* ===================== 6. UNDERWATER GALLERY (компактная сетка в панели) ===================== */
+.gallery-grid-panel{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+@media (min-width:480px){.gallery-grid-panel{grid-template-columns:repeat(3,1fr)}}
+.gallery-item-panel{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.05)}
+.gallery-item-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery-item-panel .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:7px 8px;background:linear-gradient(180deg,transparent,rgba(6,18,25,.92));font-size:10px;line-height:1.3;color:#fff}
+.gallery-item-panel .cap b{display:block;font:600 10.5px 'Inter',sans-serif}
+@media (min-width:900px){.gallery-item-panel .cap{display:none}}
+
+/* ===================== 7. YEAR-ROUND RIBBON ===================== */
+.yearround-sec{background:linear-gradient(180deg,var(--c-teal) 0,var(--c-light1) 150px,var(--c-sky) 100%);padding-top:190px}
+.yearround-sec .eyebrow{color:var(--muted)}
+.desktop-fab{transition:opacity .25s ease,transform .25s ease}
+.desktop-fab.is-hidden{opacity:0;pointer-events:none;transform:translateY(12px)}
+/* лента — горизонтальный скролл на всех размерах: без риска горизонтального скролла страницы */
+.ribbon-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px;margin:0 calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad)}
+.ribbon-item{flex:none;width:76vw;max-width:340px;scroll-snap-align:start;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/5}
+@media (min-width:900px){.ribbon-item{width:300px;aspect-ratio:3/4}}
+.ribbon-item img{width:100%;height:100%;object-fit:cover}
+.ribbon-item .cap{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(180deg,transparent,rgba(6,18,25,.78));color:#fff;font:600 13.5px 'Inter',sans-serif}
+
+/* ===================== 8. MAP / GEOGRAPHY ===================== */
+.map-sec{background:linear-gradient(180deg,var(--c-light1) 0%,var(--c-sky) 100%)}
+.map-embed{border-radius:12px;overflow:hidden;background:var(--navy);aspect-ratio:4/3}
+@media (min-width:900px){.map-embed{aspect-ratio:16/9;max-height:560px}}
+.port-list{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+@media (max-width:899.98px){.port-list{display:flex;flex-direction:column;border-top:1px solid var(--line-l);gap:0}}
+.port-list a.chip{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 16px;border:1px solid var(--line-l2);border-radius:8px;background:#fff;font-size:15px;font-weight:500;color:var(--navy)}
+.port-list a.chip:hover{border-color:var(--navy)}
+@media (max-width:899.98px){.port-list a.chip{border:none;border-bottom:1px solid var(--line-l);border-radius:0;padding:0;justify-content:space-between;height:50px;background:transparent}}
+.port-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+@media (max-width:899.98px){.port-dot{display:none}}
+
+/* ===================== 9. DOCUMENTS ===================== */
+.docs-sec{background:var(--c-sky)}
+.docs-grid{display:flex;flex-direction:column;gap:14px}
+@media (min-width:900px){.docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
+.cert-card{display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:18px}
+.cert-scan{aspect-ratio:210/280;background:#fff;border:1px solid var(--line-l);border-radius:6px;position:relative;padding:18px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.cert-scan .ln{height:6px;background:#E4EDF0;border-radius:2px}
+.cert-scan .ln.h1{height:9px;width:62%;background:var(--line-l2)}
+.cert-scan .ln2{width:80%}.cert-scan .ln3{width:70%}.cert-scan .ln4{width:88%}
+.cert-scan .seal{position:absolute;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;border:2px solid rgba(15,43,70,.3);transform:rotate(-10deg)}
+.cert-card .t{font:800 16px/1.3 'Manrope',sans-serif;color:var(--navy)}
+.cert-card .m{font-size:13px;color:var(--muted)}
+.cert-card a{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border:1px solid var(--line-l2);border-radius:8px;font-size:13.5px;font-weight:500;color:var(--navy)}
+.cert-card a:hover{border-color:var(--navy)}
+
+/* ===================== 10. CASES ===================== */
+.cases-sec{background:var(--c-sky)}
+.cases-grid{display:flex;flex-direction:column;gap:14px}
+@media (min-width:900px){.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
+.case-card{border:1px solid var(--line-l);border-radius:12px;overflow:hidden;background:#fff}
+.case-media{aspect-ratio:16/10;position:relative;overflow:hidden}
+.case-media img{width:100%;height:100%;object-fit:cover}
+.case-media .ph{position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:5px;background:rgba(15,43,70,.72);color:#fff;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.03em}
+.case-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+.case-meta{display:flex;gap:8px;font:12px 'JetBrains Mono',monospace;color:var(--muted)}
+.case-title{font:800 17px/1.3 'Manrope',sans-serif;color:var(--navy)}
+.case-result{font-size:14px;color:var(--muted)}
+.case-term{font:600 12.5px 'JetBrains Mono',monospace;color:var(--navy)}
+
+/* ===================== is-narrow: панель истории уже минимального комфортного размера (узкая свободная
+   полоса на этом участке кадра) — сворачиваем сетки в один столбец/ленту, чуть уменьшаем типографику ===================== */
+.story-panel.is-narrow .panel-head{gap:6px;margin-bottom:12px}
+.story-panel.is-narrow .panel-head h2{font-size:19px}
+.story-panel.is-narrow .panel-head p{font-size:12.5px}
+.story-panel.is-narrow .task-grid-text{display:flex;flex-direction:column;overflow:visible;margin:0;padding:0}
+.story-panel.is-narrow .task-card-text{width:auto}
+.story-panel.is-narrow .process-track-panel{grid-template-columns:1fr}
+.story-panel.is-narrow .ship-zone-nav{gap:4px}
+.story-panel.is-narrow .ship-zone-nav button{font-size:10px;padding:5px 8px}
+.story-panel.is-narrow .geo-item{height:38px}
+/* узкая панель: фото-схема судна остаётся видимой (клиент явно просил метки на фото), но метки и подписи мельче,
+   чтобы не слипались при малой ширине */
+.story-panel.is-narrow .pin-dot{width:17px;height:17px;font-size:9px}
+.story-panel.is-narrow .pin-tip{font-size:10px;padding:3px 7px}
+.story-panel.is-narrow .geo-name{font-size:12.5px}
+
+/* ===================== DEEP-PHOTOS: крупные фотоблоки на статичном подводном фоне после погружения =====================
+   Тот же приём, что у .story-bg/.story-content: фон закреплён (sticky) на всю высоту .deep-photos,
+   контент наезжает на него отрицательным отступом. Панели здесь НЕ подстраиваются под свободную зону —
+   правило "не закрывать водолаза" не действует, фон статичный, панели крупные и плотные (40-60px между блоками). */
+.deep-photos{position:relative;background:var(--c-abyss)}
+.deep-bg{position:sticky;top:0;height:100svh;overflow:hidden;z-index:1}
+.deep-bg picture,.deep-bg img{display:block;width:100%;height:100%}
+.deep-bg img{object-fit:cover;object-position:52% 50%}
+.deep-bg-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,22,29,.45) 0%,rgba(6,22,29,.58) 45%,rgba(6,22,29,.72) 100%)}
+.deep-content{position:relative;z-index:2;margin-top:-100svh;padding:8svh 20px 40px;display:flex;flex-direction:column;gap:40px}
+@media (min-width:900px){.deep-content{padding:12vh 72px 64px;gap:56px}}
+
+.deep-panel{position:relative;width:100%;max-width:1180px;margin:0 auto;padding:22px 20px;border-radius:16px;
+  background:rgba(6,22,29,.74);border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow-xl);text-shadow:0 1px 4px rgba(2,10,14,.5)}
+@media (min-width:900px){
+  .deep-panel{padding:36px 40px}
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)){ .deep-panel{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)} }
+}
+.deep-panel .panel-head{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;max-width:680px}
+.deep-panel .panel-head h2{font:800 26px/1.16 'Manrope',sans-serif;letter-spacing:-.02em;color:#fff}
+@media (min-width:900px){.deep-panel .panel-head h2{font-size:36px}}
+.deep-panel .panel-head p{font-size:14.5px;color:var(--muted-light)}
+@media (min-width:900px){.deep-panel .panel-head p{font-size:16px}}
+.deep-panel .eyebrow{color:var(--muted-light2)}
+
+/* -------- gallery-deep: крупная сетка фото -------- */
+.gallery-grid-deep{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (min-width:560px){.gallery-grid-deep{grid-template-columns:repeat(3,1fr)}}
+.gallery-item-deep{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.05)}
+.gallery-item-deep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery-item-deep .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:10px 12px;background:linear-gradient(180deg,transparent,rgba(6,18,25,.92));font-size:12px;line-height:1.35;color:#fff}
+.gallery-item-deep .cap b{display:block;font:700 13px 'Inter',sans-serif}
+
+/* -------- yearround-deep: крупная лента фото -------- */
+.ribbon-track-deep{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px;margin:0 -20px;padding-left:20px;padding-right:20px}
+@media (min-width:900px){.ribbon-track-deep{margin:0;padding-left:0;padding-right:0}}
+.ribbon-item-deep{flex:none;width:70vw;max-width:320px;scroll-snap-align:start;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/5}
+@media (min-width:900px){.ribbon-item-deep{width:280px;aspect-ratio:3/4}}
+.ribbon-item-deep img{width:100%;height:100%;object-fit:cover}
+.ribbon-item-deep .cap{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(180deg,transparent,rgba(6,18,25,.8));color:#fff;font:600 14px 'Inter',sans-serif}
+
+/* -------- cases-deep -------- */
+.cases-grid-deep{display:flex;flex-direction:column;gap:16px}
+@media (min-width:900px){.cases-grid-deep{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
+.case-card-deep{border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.05)}
+.case-card-deep .case-media{aspect-ratio:16/10;position:relative;overflow:hidden}
+.case-card-deep .case-media img{width:100%;height:100%;object-fit:cover}
+.case-card-deep .case-media .ph{position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:5px;background:rgba(6,22,29,.72);color:#fff;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.03em}
+.case-card-deep .case-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+.case-card-deep .case-meta{display:flex;gap:8px;font:12px 'JetBrains Mono',monospace;color:var(--muted-light)}
+.case-card-deep .case-title{font:800 17px/1.3 'Manrope',sans-serif;color:#fff}
+.case-card-deep .case-result{font-size:14px;color:var(--muted-light)}
+.case-card-deep .case-term{font:600 12.5px 'JetBrains Mono',monospace;color:#fff}
+
+/* -------- docs-deep: переиспользует .cert-card (светлая карточка на тёмной панели тоже читается) -------- */
+.docs-grid-deep{display:flex;flex-direction:column;gap:14px}
+@media (min-width:900px){.docs-grid-deep{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
+
+/* -------- map-deep: карта портов -------- */
+.map-frame{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:var(--navy)}
+.map-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.map-credit{margin-top:10px;font-size:11px;color:var(--muted-light2)}
+.map-pin{position:absolute;transform:translate(-50%,-50%);border:none;background:transparent;padding:0;cursor:pointer;opacity:0}
+.deep-panel.in .map-pin{animation:dv-pin-in 520ms var(--ease) both;animation-delay:calc(var(--i,0) * 130ms)}
+@keyframes dv-pin-in{to{opacity:1}}
+.pin-ring{display:block;width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 0 0 0 rgba(207,69,20,.5);animation:dv-pin-pulse 2.4s ease-out infinite}
+.map-label{position:absolute;left:14px;top:-8px;white-space:nowrap;padding:6px 10px;border-radius:7px;background:rgba(6,22,29,.85);color:#fff;font:600 12px 'Inter',sans-serif;line-height:1.3}
+.map-label i{display:block;font-style:normal;font-weight:400;font-size:10.5px;color:rgba(242,247,250,.7);margin-top:1px}
+.map-pin.pin-left .map-label{left:auto;right:14px}
+@media (max-width:899.98px){.map-label{font-size:11px;padding:5px 8px}.map-label i{font-size:10px}}
+
+/* -------- geography panel inside story: text list of ports -------- */
+.geo-list{display:flex;flex-direction:column;gap:2px}
+.geo-item{display:flex;align-items:center;gap:10px;height:44px;padding:0 4px;border-bottom:1px solid rgba(255,255,255,.1);color:inherit}
+.geo-item:last-child{border-bottom:none}
+.geo-name{font:600 14px 'Inter',sans-serif;color:#fff;flex:1}
+.geo-time{font-size:12px;color:var(--muted-light)}
+
+/* -------- transition to the light request section -------- */
+.deep-to-light-fade{height:90px;background:linear-gradient(180deg,var(--c-teal) 0%,var(--c-sky2) 100%)}
+@media (min-width:900px){.deep-to-light-fade{height:120px}}
+
+/* ===================== 11. REQUEST FORM ===================== */
+.request-sec{background:linear-gradient(180deg,var(--c-sky) 0%,var(--c-sky2) 100%)}
+.full-form-grid{display:flex;flex-direction:column;gap:24px}
+@media (min-width:900px){.full-form-grid{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:start}}
+.full-form{padding:20px;background:#fff;color:var(--navy);border:1px solid var(--line-l);border-radius:12px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-md)}
+@media (min-width:900px){.full-form{padding:32px}}
+.form-grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:560px){.form-grid2{grid-template-columns:1fr 1fr}}
+.side-contacts{display:flex;flex-direction:column;gap:22px}
+.side-contacts .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;color:var(--muted)}
+.side-contacts .tel{font:800 26px 'Manrope',sans-serif;color:var(--accent)}
+@media (min-width:900px){.side-contacts .tel{font-size:30px}}
+.side-contacts .req-block{font-size:14px;line-height:1.7;color:var(--muted)}
+.success-state{display:none;flex-direction:column;gap:12px;min-height:260px;justify-content:center;align-items:flex-start}
+.success-state.show{display:flex}
+.success-icon{width:48px;height:48px;border-radius:50%;background:#E7F6EF;color:#059669;display:grid;place-items:center}
+.success-title{font:800 24px/1.2 'Manrope',sans-serif;color:var(--navy)}
+.on-light-form p{color:var(--muted)}
+
+/* ===================== FOOTER ===================== */
+footer.site-footer{background:var(--navy);color:var(--white);padding:44px 20px 108px}
+@media (min-width:900px){footer.site-footer{padding:56px 72px 36px}}
+.footer-top{display:flex;flex-direction:column;gap:24px}
+@media (min-width:900px){.footer-top{display:grid;grid-template-columns:5fr 7fr;gap:64px;padding-bottom:32px;border-bottom:1px solid var(--line-d)}}
+.footer-brand .row{display:flex;align-items:center;gap:10px}
+.footer-brand .mark{width:32px;height:32px;border-radius:8px;background:var(--white);color:var(--navy);display:grid;place-items:center;font:800 12px 'Manrope',sans-serif}
+.footer-brand .name{font:800 15px 'Manrope',sans-serif}
+.footer-req{font-size:13px;line-height:1.7;color:rgba(242,247,250,.75);margin-top:12px}
+.footer-cols-d{display:none}
+@media (min-width:900px){.footer-cols-d{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;font-size:15px}.footer-cols-d a{display:block;color:var(--white)}.footer-cols-d .colgap{display:flex;flex-direction:column;gap:10px}}
+.footer-links2{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+@media (min-width:900px){.footer-links2{display:none}}
+.footer-soc{display:flex;gap:8px;margin-top:4px}
+.footer-soc a{height:38px;padding:0 14px;border:1px solid rgba(255,255,255,.22);border-radius:8px;display:inline-flex;align-items:center;color:var(--white)}
+.footer-bottom{display:flex;flex-direction:column;gap:8px;font-size:12px;color:rgba(242,247,250,.6);border-top:1px solid var(--line-d);padding-top:16px;margin-top:24px}
+@media (min-width:900px){.footer-bottom{flex-direction:row;justify-content:space-between;padding-top:20px;font-size:13px;border-top:none;margin-top:0}}
+
+/* ===================== URGENT MODAL ===================== */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:80;background:rgba(6,18,25,.62);align-items:flex-end;justify-content:center}
+@media (min-width:900px){.modal-overlay{align-items:center}}
+.modal-overlay.open{display:flex}
+.urgent-modal{width:100%;max-width:520px;background:#fff;color:var(--navy);border-radius:16px 16px 0 0;padding:20px 20px 26px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl)}
+@media (min-width:900px){.urgent-modal{border-radius:16px;padding:32px}}
+.sheet-handle{width:40px;height:4px;border-radius:2px;background:var(--line-l2);margin:0 auto 14px}
+@media (min-width:900px){.sheet-handle{display:none}}
+.urgent-modal-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.urgent-modal-head .t{font:800 21px 'Manrope',sans-serif}
+.urgent-modal-head button{width:34px;height:34px;border:none;background:transparent;color:var(--muted);display:grid;place-items:center;cursor:pointer;border-radius:8px}
+.urgent-modal-head button:hover{background:#F0F4F6}
+.urgent-modal .success-state p{color:var(--muted)}
+
+/* ===================== COOKIE BANNER ===================== */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:75;background:var(--navy);color:var(--white);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-xl);max-width:560px}
+@media (min-width:900px){.cookie-banner{left:auto;right:28px;bottom:96px;max-width:440px;flex-direction:row;align-items:center;padding:14px 18px}}
+@media (max-width:899.98px){.cookie-banner{bottom:84px;padding:12px 14px;gap:8px}.cookie-banner p{font-size:12.5px}}
+.cookie-banner.hidden{display:none}
+.cookie-banner p{font-size:13.5px;color:rgba(242,247,250,.85);margin:0}
+.cookie-banner a{text-decoration:underline}
+.cookie-banner .row{display:flex;gap:10px;flex:none}
+
+/* компактный баннер cookie: полоса, не перекрывает панели */
+.cookie-banner{max-width:520px;padding:10px 12px;gap:10px;flex-direction:row;align-items:center}
+.cookie-banner p{font-size:12.5px;line-height:1.35;flex:1}
+.cookie-banner .row{display:flex;gap:6px;flex:none}
+.cookie-banner .btn-40{height:34px;padding:0 12px;font-size:13px}
+@media (max-width:899.98px){.cookie-banner{left:10px;right:10px;bottom:78px;border-radius:10px}}
+@media (min-width:900px){.cookie-banner{left:auto;right:24px;bottom:92px}}
+
+/* ===== v6.2: нижняя статичная часть — стоп-кадр видео без затемнения-полосы; прозрачные панели, плотное наполнение ===== */
+.deep-photos{margin-top:-100svh;background:transparent;z-index:3}
+.deep-bg img{object-fit:cover;object-position:50% 50%}
+@media (min-width:900px){.deep-bg img{transform:scale(1.3);transform-origin:0% 50%}}
+.deep-bg-fade{background:rgba(6,22,29,.18)}
+.deep-content{padding-top:100svh}
+.deep-panel{background:rgba(6,22,29,.34)!important;border-color:rgba(255,255,255,.18)}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)){ .deep-panel{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)} }
+/* плотное наполнение: карточки, фото, списки, форма */
+.deep-panel .case-card-deep,.deep-panel .cert-card,.deep-panel .ship-detail-card,.deep-panel .ship-list-item-plain,.deep-panel .ship-zone-nav button{background:rgba(6,22,29,.86);border-radius:12px}
+.deep-panel .ship-detail-card{padding:16px}
+.deep-panel .gallery-item-deep,.deep-panel .ribbon-item-deep{background:rgba(6,22,29,.86);border-radius:12px;overflow:hidden}
+.request-deep .full-form,.request-deep .side-contacts{background:#fff;color:var(--navy);border-radius:14px;padding:22px;text-shadow:none}
+.request-deep .panel-head h2,.request-deep .panel-head p,.request-deep .eyebrow{color:#fff}
+.request-deep .full-form-grid{display:grid;gap:20px}
+@media (min-width:900px){.request-deep .full-form-grid{grid-template-columns:1.5fr 1fr;align-items:start}}
+.request-deep .success-state{background:#fff;color:var(--navy);border-radius:14px;padding:22px}
+/* схема судна крупно отдельным слайдом */
+.ship-deep .ship-figure,.ship-deep .ship-photo{max-width:100%}
+@media (min-width:900px){.ship-deep .ship-figure{max-width:1100px;margin:0 auto}}
+
+/* v6.3: карусель «Круглый год» со стрелками вместо полосы прокрутки */
+.ribbon-carousel{position:relative}
+.ribbon-viewport{overflow:hidden;border-radius:12px}
+.ribbon-carousel .ribbon-track-deep{overflow:visible;scroll-snap-type:none;margin:0;padding:0;will-change:transform}
+.rc-btn{position:absolute;top:50%;z-index:3;width:52px;height:52px;margin-top:-26px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(6,22,29,.88);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
+.rc-btn:hover,.rc-btn:focus-visible{background:#CF4514;border-color:#CF4514;transform:scale(1.08)}
+.rc-prev{left:14px}.rc-next{right:14px}
+
+/* v6.3: плавное увеличение фото при наведении или фокусе */
+.gallery-item-deep img,.ribbon-item-deep img,.case-card-deep .case-media img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.gallery-item-deep:hover img,.ribbon-item-deep:hover img,.case-card-deep:hover .case-media img,.case-card-deep:focus-within .case-media img{transform:scale(1.07)}
+.cert-card{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.cert-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+
+/* v6.7: иконки в преимуществах вместо номеров */
+.adv-panel .process-num svg{display:block}
+#yearround .geo-time{font-family:'Inter',sans-serif}
+
+/* v6.7: лицензии — читаемый текст на тёмной карточке, сканы ниже */
+.deep-panel .cert-card{border-color:rgba(242,247,250,.16)}
+.deep-panel .cert-card .t{color:#fff}
+.deep-panel .cert-card .m{color:rgba(242,247,250,.72)}
+.deep-panel .cert-card a{color:#fff;border-color:rgba(242,247,250,.4)}
+.deep-panel .cert-card a:hover{background:#CF4514;border-color:#CF4514}
+@media (min-width:900px){.deep-panel .cert-scan{aspect-ratio:auto;height:260px}}
+
+/* v6.8: галерея — одна строка по 3 фото, листание стрелками по кругу (ПК) */
+@media (min-width:900px){
+  .gallery-carousel .gallery-grid-deep{display:flex;gap:12px;will-change:transform}
+  .gallery-carousel .gallery-item-deep{flex:none;width:calc((100% - 24px) / 3)}
+}
