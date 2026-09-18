@@ -140,8 +140,7 @@
     }
     var vp = clamp((p - P_VIDEO_START) / Math.max(0.0001, P_VIDEO_END - P_VIDEO_START), 0, 1);
     var count = isDesktop ? 72 : 60;
-    var keys = isDesktop ? [1, 24, 48, 72] : [1, 20, 40, 60];
-    var idx = keys[clamp(Math.round(vp * (keys.length - 1)), 0, keys.length - 1)];
+    var idx = clamp(Math.round(1 + vp * (count - 1)), 1, count);
     return { platform: isDesktop ? 'd' : 'm', kind: 'seq', idx: idx };
   }
   function zoneForFrame(fr){
@@ -290,8 +289,8 @@
     if (!videoCanvas || !videoCtx) return;
 
     var CONFIG = {
-      d: { dir: 'seq/d/', count: 72, keys: [1, 24, 48, 72], maxW: 1600, maxH: 900 },
-      m: { dir: 'seq/m/', count: 60, keys: [1, 20, 40, 60], maxW: 1080, maxH: 1920 }
+      d: { dir: 'seq/d/', count: 72, maxW: 1600, maxH: 900 },
+      m: { dir: 'seq/m/', count: 60, maxW: 1080, maxH: 1920 }
     };
     var cfg = isDesktop ? CONFIG.d : CONFIG.m;
 
@@ -339,7 +338,7 @@
       }
       videoCanvas.style.width = stage.clientWidth + 'px';
       videoCanvas.style.height = stage.clientHeight + 'px';
-      drawnIndex = (drawnIndex || 0) + 1000; /* форсируем перерисовку после ресайза */
+      drawnIndex = 0; /* форсируем перерисовку после ресайза */
     }
 
     function drawCover(img){
@@ -355,15 +354,6 @@
       videoCtx.drawImage(img, dx, dy, dw, dh);
     }
 
-    function drawCoverNoClear(img){
-      var cw = videoCanvas.width, ch = videoCanvas.height;
-      var iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
-      var scale = Math.max(cw / iw, ch / ih);
-      var desk = window.innerWidth >= 900;
-      if (desk) scale *= 1.3;
-      var dw = iw * scale, dh = ih * scale;
-      videoCtx.drawImage(img, desk ? 0 : (cw - dw) / 2, (ch - dh) / 2, dw, dh);
-    }
     function draw(idx){
       var srcIdx = cache[idx] ? idx : nearestLoaded(idx);
       if (!srcIdx || !cache[srcIdx]) return; /* ничего не загружено — canvas остаётся пустым, виден фолбэк-столб */
@@ -372,23 +362,12 @@
     }
 
     /* ---------- rAF loop: сглаживает целевой индекс, рисует не чаще кадра экрана, только при смене ---------- */
-    /* вариант без видео: 4 картинки с водолазом, каждая стоит, между ними короткий наплыв */
-    var drawnKey = '';
     function tick(){
-      var K = cfg.keys.length;
-      var targetFloat = videoTargetProgress * (K - 1);
-      drawnFloat += (targetFloat - drawnFloat) * 0.25;
-      if (Math.abs(targetFloat - drawnFloat) < 0.002) drawnFloat = targetFloat;
-      var i = clamp(Math.floor(drawnFloat), 0, K - 1), f = drawnFloat - i;
-      var a = smoothstep(0.38, 0.62, f);
-      var ia = cfg.keys[i], ib = cfg.keys[Math.min(K - 1, i + 1)];
-      var key = ia + ':' + ib + ':' + Math.round(a * 100) + ':' + drawnIndex;
-      if (key !== drawnKey && cache[ia]){
-        var cw = videoCanvas.width, ch = videoCanvas.height;
-        videoCtx.globalAlpha = 1; drawCover(cache[ia]);
-        if (a > 0 && cache[ib] && ib !== ia){ videoCtx.globalAlpha = a; drawCoverNoClear(cache[ib]); videoCtx.globalAlpha = 1; }
-        drawnKey = key;
-      }
+      var targetFloat = 1 + videoTargetProgress * (cfg.count - 1);
+      drawnFloat += (targetFloat - drawnFloat) * 0.3;
+      if (Math.abs(targetFloat - drawnFloat) < 0.02) drawnFloat = targetFloat;
+      var idx = clamp(Math.round(drawnFloat), 1, cfg.count);
+      if (idx !== drawnIndex) draw(idx);
       if (running) rafId = requestAnimationFrame(tick);
     }
     function start(){ if (running) return; running = true; rafId = requestAnimationFrame(tick); }
@@ -426,7 +405,11 @@
     }
 
     function buildLoadOrder(){
-      return cfg.keys.slice();
+      var all = [];
+      for (var i = 1; i <= cfg.count; i++) all.push(i);
+      var key = []; var rest = [];
+      all.forEach(function(idx){ (((idx - 1) % 6) === 0 ? key : rest).push(idx); });
+      return key.concat(rest);
     }
 
     function loadSequence(){
